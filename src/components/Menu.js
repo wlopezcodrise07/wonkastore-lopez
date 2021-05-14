@@ -6,6 +6,7 @@ import { Form } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
+import car from '../img/car.png';
 class Menu extends React.Component{
     render(){
         const Welcome = ({name}) =>{
@@ -16,6 +17,13 @@ class Menu extends React.Component{
                         <NavDropdown.Item href="#action3">Logout</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
+
+            )
+        }
+        const CartWidge = ({name}) =>{
+            return (
+                
+                <Nav.Link href="#shop"><img src={car} width="30px"/> </Nav.Link> 
 
             )
         }
@@ -34,10 +42,9 @@ class Menu extends React.Component{
                     </NavDropdown>
                     <Nav.Link href="#contacts">Contacto</Nav.Link>
                 </Nav>
-                <Form inline>
-                    <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                    <Button variant="outline-info">Search</Button>
-                </Form>
+                <Nav>             
+                <CartWidge/>
+                </Nav>
                 <Welcome name="William"/>
         </Navbar>
         )
