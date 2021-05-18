@@ -1,12 +1,15 @@
+import React from "react";
 import logo from './logo.svg';
 import './App.css';
-import Menu from "./components/Menu";
-import Contenido from "./components/Contenido";
+import NavBar from "./components/NavBar";
+import ItemListContainer from "./components/ItemListContainer";
+import CartWidge from "./components/CartWidge";
 function App() {
+
   return (
     <>
-    <Menu />
-    <Contenido />
+    <NavBar />
+    <ItemListContainer />
     </>
   );
 }

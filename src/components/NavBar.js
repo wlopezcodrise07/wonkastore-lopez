@@ -6,28 +6,20 @@ import { Form } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import { FormControl } from 'react-bootstrap';
-import car from '../img/car.png';
-class Menu extends React.Component{
-    render(){
-        const Welcome = ({name}) =>{
-            return (
-                <Nav>
-                    <NavDropdown title={"Bienvenido "+name} id="navbarScrollingDropdown">
-                        <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
-                        <NavDropdown.Item href="#action3">Logout</NavDropdown.Item>
-                    </NavDropdown>
-                </Nav>
+import CartWidge from './CartWidge';
+const Welcome = ({name}) =>{
+    return (
+        <Nav>
+            <NavDropdown title={"Bienvenido "+name} id="navbarScrollingDropdown">
+                <NavDropdown.Item href="#action4">Settings</NavDropdown.Item>
+                <NavDropdown.Item href="#action3">Logout</NavDropdown.Item>
+            </NavDropdown>
+        </Nav>
 
-            )
-        }
-        const CartWidge = ({name}) =>{
-            return (
-                
-                <Nav.Link href="#shop"><img src={car} width="30px"/> </Nav.Link> 
-
-            )
-        }
-        return (
+    )
+}
+const NavBar = () =>{
+    return (
 
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home">Wonka's</Navbar.Brand>
@@ -42,12 +34,10 @@ class Menu extends React.Component{
                     </NavDropdown>
                     <Nav.Link href="#contacts">Contacto</Nav.Link>
                 </Nav>
-                <Nav>             
-                <CartWidge/>
-                </Nav>
-                <Welcome name="William"/>
-        </Navbar>
+                <CartWidge />
+                <Welcome name="William" />
+        </Navbar> 
         )
-    }
 }
-  export default Menu
+
+  export default NavBar
