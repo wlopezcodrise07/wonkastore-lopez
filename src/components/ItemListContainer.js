@@ -9,7 +9,7 @@ const ItemListContainer = () =>{
                 </div>
                 
                 <br/>
-                <ItemCount />
+                <ItemCount stock={7} inicial={1}/>
                 </center>
         )
 }
