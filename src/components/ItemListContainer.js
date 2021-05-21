@@ -1,16 +1,24 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ItemCount from './ItemCount';
+import ItemList from './ItemList';
 const ItemListContainer = () =>{
+
     return (
-<center>
-        <div><br/><br/>
+        <>
+        <center>
+        <div>
+            <br/><br/>
+             
                     <h1>Bienvenido a Wonka's Store</h1>
-                </div>
+        </div>
                 
                 <br/>
-                <ItemCount stock={7} inicial={1}/>
-                </center>
+        </center>
+        
+        
+        <br/>
+        <ItemList/>
+        </>
         )
 }
   export default ItemListContainer
