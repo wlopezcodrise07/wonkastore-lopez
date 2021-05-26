@@ -2,7 +2,7 @@ import React,{useEffect,useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Item from './Item';
 
-const ItemList = () =>{
+const ItemList = ({verDetalle}) =>{
     const [products, setProducts] = useState(null);
 
 const data = 
@@ -63,6 +63,7 @@ let promise = new Promise((resolve, reject) => {
                         img={product.description}
                         detail={product.detail}
                         stock={product.stock}
+                        verDetalle={verDetalle}
                     />
                 ))}
             </>

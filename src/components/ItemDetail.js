@@ -2,7 +2,7 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemCount from './ItemCount';
 
-const ItemDetail = ({idproduct,name,price,img}) =>{
+const ItemDetail = ({idproduct,name,price,img,detail,stock}) =>{
     
     
     return (
@@ -16,7 +16,8 @@ const ItemDetail = ({idproduct,name,price,img}) =>{
                 /><br/>
                 <h3>{name} - {idproduct}</h3>
                 <h3>Precio : {price} USD</h3>
-                <ItemCount stock={7} inicial={1} product={idproduct}/>
+                
+                <ItemCount stock={stock} inicial={1} product={idproduct}/>
                 </center>
             </div>
         </div>
