@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemList from './ItemList';
+import ItemDetailContainer from './ItemDetailContainer';
+import Item from './Item';
 const ItemListContainer = () =>{
-
+        const [detallePostre,setDetallePostre] = useState(true);
+        const verDetalle = (id) =>{
+            setDetallePostre(id);
+            console.log(id)
+        }
     return (
         <>
         <center>
@@ -17,7 +23,15 @@ const ItemListContainer = () =>{
         
         
         <br/>
-        <ItemList/>
+        <div class="row">
+            <div className="col-3">
+                <ItemList seeDetail={()=>verDetalle(idproduct)}/>
+
+            </div>
+            <div className="col-9">
+                <ItemDetailContainer idpostre={2}/>
+            </div>
+        </div>
         </>
         )
 }
