@@ -13,11 +13,15 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock}) =>{
                 src={img}
                 width="100px"    
                 height="100px" 
-                /><br/>
-                <h3>{name} - {idproduct}</h3>
-                <h3>Precio : {price} USD</h3>
-                
-                <ItemCount stock={stock} inicial={1} product={idproduct}/>
+                /><br/><span>
+                <h3>{name}</h3>
+                <h3>Precio : {price} USD</h3></span>
+                {stock>0
+                    ? 
+                    <ItemCount stock={stock} inicial={1} product={idproduct}/>
+                    :
+                    <h4 style={{color:'red',fontWeight:'bold',fontStyle:'italic'}}>No hay Stock :c</h4>    
+                }
                 </center>
             </div>
         </div>

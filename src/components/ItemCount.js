@@ -16,7 +16,7 @@ const ItemCount = ({stock,inicial,key}) =>{
             <button className="btn btn-dark" onClick={()=>cambiarValor(-1)}>-</button> 
             <label style={{textAlign: "center",width:"100px",fontWeight:"bold"}}>{count} </label>
             <button className="btn btn-dark" onClick={()=>cambiarValor(1)}>+</button> <br/><br/>
-            <button className="btn btn-dark btn-block"><img src={car} width="30px" key={key} /> <span>Add</span> </button>
+            <button className="btn btn-dark"><img src={car} width="30px" key={key} /> <span>Add</span> </button>
             </>
               
         )
