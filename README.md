@@ -1,11 +1,11 @@
-##Ecommerce Wonka's Store
+## Ecommerce Wonka's Store
 
 Tienda virtual de venta de ropa geek masculina
 
 Actualmente se están vendiendo tres categorias de productos (polos, piques, poleras). Se cuenta con un stock limitado de productos.
 
 
-##Instalación
+## Instalación
 
 Para la instalación del aplicativo, puedes descargarlo desde un zip o clonarlo a una carpeta local con el siguiente comando
 
@@ -17,14 +17,14 @@ Luego de instalar el proyecto, se instala las dependencias de react desde el ter
 npm install
 
 
-##Uso
+## Uso
 Para correr nuestro proyecto, desde el terminarl ejecutamos el siguiente comando ubicados en la carpeta del aplicativo
 
 npm start
 
 Posterior se abrirá el navegador con el proyecto web
 
-##Complementos
+## Complementos
 
 Para el uso de bootstrap se utilizó la siguiente línea de comandos:
 
@@ -35,6 +35,6 @@ Para el uso de react-router-dom
 npm install --save react-router-dom
 
 
-##Creado por 
+## Creado por 
 William Lopez - Versión 1
 
