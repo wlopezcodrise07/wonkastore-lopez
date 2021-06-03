@@ -1,0 +1,16 @@
+.change_opacity{
+opacity: 0.7;
+transition: all 0.6s;
+}
+    
+.change_opacity:hover{
+opacity: 1;
+zoom: 130%;
+}
+
+.change_height{
+transition: all 0.6s;
+}
+.change_height:hover{
+zoom: 130%;
+}
