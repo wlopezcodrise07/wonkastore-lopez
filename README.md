@@ -1,4 +1,4 @@
-*Ecommerce Wonka's Store
+##Ecommerce Wonka's Store
 
 Tienda virtual de venta de ropa geek masculina
 
@@ -11,7 +11,6 @@ Para la instalación del aplicativo, puedes descargarlo desde un zip o clonarlo 
 
 git clone https://github.com/wlopezcodrise07/wonkastore-lopez
 cd wonkastore-lopez
-```
 
 Luego de instalar el proyecto, se instala las dependencias de react desde el terminal
 
