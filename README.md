@@ -1,6 +1,6 @@
 ## Ecommerce Wonka's Store
 
-Tienda virtual de venta de ropa geek masculina
+Tienda virtual de venta de ropa geek masculina, catalogo de productos y carrito de compras.
 
 Actualmente se están vendiendo tres categorias de productos (polos, piques, poleras). Se cuenta con un stock limitado de productos.
 
