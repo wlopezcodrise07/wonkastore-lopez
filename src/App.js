@@ -33,7 +33,11 @@ function App() {
       <Route exact path="/item/:id">
         <ItemDetailContainer/>
       </Route>
-
+      <Route exact path="/car/:car">
+        <>
+          <h1>Lista de Compras</h1>
+        </>
+      </Route>
     </Switch>
 
     </BrowserRouter>
