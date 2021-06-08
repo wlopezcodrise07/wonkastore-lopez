@@ -11,6 +11,12 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock,type}) =>{
     const [contenido,setContenido] = useState(
         <Cargando />
     );
+    const [cant,setCant] = useState(0);
+
+    const onAdd = (cantidad) =>{
+        setCant(cantidad);
+        console.log(`Agregar al carrito el producto: ${name} con cantidad: ${cantidad}`)
+    }
     setTimeout(function () {
 
         setContenido(
@@ -45,7 +51,11 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock,type}) =>{
                     
                     {stock>0
                         ? 
-                        <ItemCount stock={stock} inicial={1} product={idproduct}/>
+                        (cant<=0?
+                        <ItemCount onAdd={onAdd} stock={stock} inicial={0} product={idproduct}/>
+                        :
+                      <Link to={"/car/"+cant} className="btn btn-success">Terminar Compra de {cant} unidades</Link>
+                        )
                         :
                         <h4 style={{color:'red',fontWeight:'bold',fontStyle:'italic'}}>No hay Stock :c</h4>    
                     }
