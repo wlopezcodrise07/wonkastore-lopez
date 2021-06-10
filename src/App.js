@@ -7,9 +7,10 @@ import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from './components/ItemDetailContainer';
+import {CartProvider} from "./contexts/CartContext";
 function App() {
-
   return (
+    <CartProvider>
     <BrowserRouter>
 
     <NavBar />
@@ -39,8 +40,8 @@ function App() {
         </>
       </Route>
     </Switch>
-
     </BrowserRouter>
+    </CartProvider>
   );
 }
 

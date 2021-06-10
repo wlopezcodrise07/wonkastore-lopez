@@ -6,20 +6,20 @@ import data1 from '../data/productos';
 const ItemDetailContainer = () =>{
     const [detalle, setDetalle] = useState(null);
     const {id} = useParams();
-
-    let promise = new Promise((resolve, reject) => {
+    useEffect(() => {
+      let promise = new Promise((resolve, reject) => {
         setTimeout(function () {
           resolve(data1); 
         }, 500);
       });
-      
-      promise.then(
-        function (value) {
+      id ? promise.then(result => {
+        setDetalle(result.filter(p => p.name.replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
+      })
+      : promise.then(result => {
+        setDetalle(result.filter(p => p.name.replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
+      })
+    },[id])
 
-    const result = data1.filter(p => p.name.replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id);
-            setDetalle(result);
-        }
-      );
 
   return (
      
