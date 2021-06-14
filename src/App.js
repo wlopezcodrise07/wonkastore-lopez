@@ -7,6 +7,7 @@ import AboutUs from "./components/AboutUs";
 import Home from "./components/Home";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from './components/ItemDetailContainer';
+import Cart from './components/Cart';
 import {CartProvider} from "./contexts/CartContext";
 function App() {
   return (
@@ -34,10 +35,9 @@ function App() {
       <Route exact path="/item/:id">
         <ItemDetailContainer/>
       </Route>
-      <Route exact path="/car/:car">
-        <>
-          <h1>Lista de Compras</h1>
-        </>
+      <Route exact path="/car">
+        <Cart/>
+
       </Route>
     </Switch>
     </BrowserRouter>

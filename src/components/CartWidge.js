@@ -1,11 +1,16 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Nav } from 'react-bootstrap';
+import {Link} from "react-router-dom";
 import car from '../img/car.png';
+import {useCart} from "../contexts/CartContext";
 const CartWidge = () =>{
-    return (
+const cart = useCart();
 
-        <Nav.Link  href="#shop"><img src={car} width="30px"/> </Nav.Link> 
+    return (
+      parseInt(cart.cart.quantity)>0?
+        <Link  to="/car"><img src={car} width="30px"/> <span class="badge badge-light">{parseInt(cart.cart.quantity)}</span></Link> 
+      :
+      <></>
         )
 }
   export default CartWidge
