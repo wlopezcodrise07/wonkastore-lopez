@@ -3,23 +3,26 @@ import {useParams} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetail from './ItemDetail'
 import data1 from '../data/productos';
+import {getFirestore} from '../firebase';
 const ItemDetailContainer = () =>{
     const [detalle, setDetalle] = useState(null);
     const {id} = useParams();
-    useEffect(() => {
-      let promise = new Promise((resolve, reject) => {
-        setTimeout(function () {
-          resolve(data1); 
-        }, 500);
-      });
-      id ? promise.then(result => {
-        setDetalle(result.filter(p => p.name.replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
-      })
-      : promise.then(result => {
-        setDetalle(result.filter(p => p.name.replace(/[^\w ]+/g,'').replace(/ +/g,'-') == id));
-      })
-    },[id])
 
+    useEffect(() => {
+      const db = getFirestore();
+      const itemsCollection = db.collection("products");
+        const itemFiltered = itemsCollection.where('name','==',id.replace(/-/g,' '));
+        itemFiltered.get().then((snapshot) => {
+          if(snapshot.size ===0){
+            console.log('No resultados!')
+          }
+          setDetalle(snapshot.docs.map(doc => doc.data()))
+         })  
+
+  
+    }
+    ,[id])
+  ;
 
   return (
      

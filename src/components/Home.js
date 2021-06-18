@@ -9,7 +9,7 @@ const Home = () =>{
     setTimeout(function () {
 
         setContenido(
-            <>
+            <div>
             <center>
             <div>
                 <br/><br/>             
@@ -58,7 +58,7 @@ const Home = () =>{
                     </center>
                 </div>
             </div>
-            </>
+            </div>
         );
        }, 2000);
     return (

@@ -4,14 +4,15 @@ export const CartContext = createContext();
 export const useCart = () => useContext(CartContext);
 
 export const CartProvider = ({children}) =>{
-    const [cart,setCart] = useState({ items : [],quantity:0});
+    const [cart,setCart] = useState({ items : [],quantity:0,total:0});
 
     const addItem = (item) => {
         const result = cart.items.filter(p => p.idproduct == item.idproduct)
         const cantQuantity=(cart.quantity);
+        const total=(cart.total);
         console.log(cantQuantity)
         if(result.length == 0){
-            setCart({...cart,items:[...cart.items, item],quantity:(cantQuantity+item.cant)})
+            setCart({...cart,items:[...cart.items, item],quantity:(cantQuantity+item.cant),total:(total+(item.price*item.cant))})
             console.log(item.cant)
             alert("Se agregó al carrito");
       }else{
@@ -22,7 +23,7 @@ export const CartProvider = ({children}) =>{
               } 
           }
         )
-        setCart({items:cart.items,quantity:(cantQuantity+item.cant)})
+        setCart({items:cart.items,quantity:(cantQuantity+item.cant),total:(total+(item.price*item.cant))})
         alert("Se agregó al carrito")
       }
 
@@ -36,11 +37,13 @@ export const CartProvider = ({children}) =>{
     const removeItem = (itemId) =>{
         const item = cart.items.filter(p => p.idproduct == itemId);
         const cantQuantity=(cart.quantity);
+        const total=(cart.total);
+
         console.log(item[0].cant)
         console.log(cantQuantity)
         console.log(parseInt(cantQuantity-item[0].cant))
         const result = cart.items.filter(p => p.idproduct != itemId);
-        setCart({items:result,quantity:parseInt(cantQuantity-item[0].cant)});
+        setCart({items:result,quantity:parseInt(cantQuantity-item[0].cant),total:(total-(item[0].price*item[0].cant))});
 
     }
     return (

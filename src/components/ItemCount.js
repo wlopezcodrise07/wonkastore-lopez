@@ -15,11 +15,13 @@ const ItemCount = ({onAdd,stock,inicial,key}) =>{
 
     return (
             <> 
+            <center>
             <h4  className="stock">Stock del Producto : {stock} UND</h4>              
             <button className="btn btn-dark" onClick={()=>cambiarValor(-1)}>-</button> 
             <label style={{textAlign: "center",width:"100px",fontWeight:"bold"}}>{count} </label>
             <button className="btn btn-dark" onClick={()=>cambiarValor(1)}>+</button> <br/><br/>
            <button className="btn btn-dark" onClick={()=>onAdd(count)}><img src={car} width="30px" key={key} /> <span>Add</span> </button>
+           </center>
   
             </>
               

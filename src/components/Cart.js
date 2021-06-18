@@ -21,7 +21,7 @@ const Cart = () =>{
         : promise.then(result => {
         })
       })
-
+    const montoTotal = 0;
 
 
        return(
@@ -71,7 +71,10 @@ const Cart = () =>{
                             <td><button className="btn btn-danger" onClick={()=>cart.removeItem(x.idproduct)}>Eliminar</button></td>
                         </tr>
                         ))}
-
+                        <tr>
+                            <td colSpan={4}><center>TOTAL</center></td>
+                            <td colSpan={3}><h3><center>{parseFloat(cart.cart.total)} USD</center></h3></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>

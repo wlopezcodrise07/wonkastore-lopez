@@ -22,23 +22,27 @@ const Welcome = ({name}) =>{
 }
 const NavBar = () =>{
     return (
+        <div className="row">
+            <div className="col-md-12">
+            <Navbar className="navbar navbar-expand-lg" bg="dark" variant="dark">
+                <Navbar.Brand href="/"><img src={logo} width="100px"/></Navbar.Brand>
+                    <Nav className="mr-auto">
+                        <Link to="/home" className="nav-link">Inicio</Link>
+                        <Link to="/aboutus" className="nav-link">¿Quienes Somos?</Link>              
+                        <NavDropdown title="Productos" id="navbarScrollingDropdown">
+                            <Link to="/category/polo" className="dropdown-item">Polos</Link>
+                            <Link to="/category/pique" className="dropdown-item">Piques</Link>
+                            <NavDropdown.Divider />
+                            <Link to="/category/polera" className="dropdown-item">Poleras</Link>
+                        </NavDropdown>
+                        <Nav.Link href="#contacts">Contacto</Nav.Link>
+                    </Nav>
+                    <CartWidge />
+                    <Welcome name="William" />
+            </Navbar> 
 
-        <Navbar bg="dark" variant="dark">
-            <Navbar.Brand href="/"><img src={logo} width="100px"/></Navbar.Brand>
-                <Nav className="mr-auto">
-                    <Link to="/home" className="nav-link">Inicio</Link>
-                    <Link to="/aboutus" className="nav-link">¿Quienes Somos?</Link>              
-                    <NavDropdown title="Productos" id="navbarScrollingDropdown">
-                        <Link to="/category/polo" className="dropdown-item">Polos</Link>
-                        <Link to="/category/pique" className="dropdown-item">Piques</Link>
-                        <NavDropdown.Divider />
-                        <Link to="/category/polera" className="dropdown-item">Poleras</Link>
-                    </NavDropdown>
-                    <Nav.Link href="#contacts">Contacto</Nav.Link>
-                </Nav>
-                <CartWidge />
-                <Welcome name="William" />
-        </Navbar> 
+            </div>
+        </div>
         )
 }
 

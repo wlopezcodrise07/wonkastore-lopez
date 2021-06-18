@@ -8,7 +8,7 @@ const cart = useCart();
 
     return (
       parseInt(cart.cart.quantity)>0?
-        <Link  to="/car"><img src={car} width="30px"/> <span class="badge badge-light">{parseInt(cart.cart.quantity)}</span></Link> 
+        <Link  to="/cart"><img src={car} width="30px"/> <span class="badge badge-light">{parseInt(cart.cart.quantity)}</span></Link> 
       :
       <></>
         )

@@ -21,15 +21,15 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock,type}) =>{
        return(
         <>
         <div className="row">
-            <div className="col-1"></div>
-            <div className="col-3">
+            <div className="col-md-1"></div>
+            <div className="col-md-3">
             <br/><br/>
             <Link to={"/category/"+type} className="btn btn-dark">Back</Link>
 
             </div>
         </div>
         <div className="row">
-            <div className="col-6"> 
+            <div className="col-md-6"> 
             <br/><br/>
                 <center>
                 <img 
@@ -40,7 +40,7 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock,type}) =>{
                 /><br/>
                 </center>
             </div>
-            <div className="col-4">
+            <div className="col-md-4">
             <br/><br/>
             <center>
             <span>
@@ -53,7 +53,7 @@ const ItemDetail = ({idproduct,name,price,img,detail,stock,type}) =>{
                     (cant<=0?
                     <ItemCount onAdd={addNewItem} stock={stock} inicial={0} product={idproduct}/>
                     :
-                  <Link to="/car"  className="btn btn-success">Terminar Compra de {cant} unidades</Link>
+                  <Link to="/cart"  className="btn btn-success">Terminar Compra de {cant} unidades</Link>
                     )
                     :
                     <h4 style={{color:'red',fontWeight:'bold',fontStyle:'italic'}}>No hay Stock :c</h4>    
