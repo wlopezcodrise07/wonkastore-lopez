@@ -67,6 +67,7 @@ export const CartProvider = ({children}) =>{
         ordersCollections.add(Order).then((response) => {
             console.log(response)
             clear();
+            alert('Gracias, el ID de tu compra es '+response.id+' :)')
         })
     }
     return (

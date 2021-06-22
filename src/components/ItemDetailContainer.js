@@ -3,12 +3,15 @@ import {useParams} from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ItemDetail from './ItemDetail'
 import data1 from '../data/productos';
+import Cargando from './Cargando';
 import {getFirestore} from '../firebase';
 const ItemDetailContainer = () =>{
     const [detalle, setDetalle] = useState(null);
     const {id} = useParams();
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
+      setLoading(true)
       const db = getFirestore();
       const itemsCollection = db.collection("products");
         const item = itemsCollection.doc(id);
@@ -20,7 +23,10 @@ const ItemDetailContainer = () =>{
             docs.push({id:doc.id,...doc.data()})
      
           setDetalle(docs);
-         })  
+         }) 
+         .finally(()=>{
+           setLoading(false);
+         }) ; 
 
   
     }
@@ -30,6 +36,9 @@ const ItemDetailContainer = () =>{
   return (
      
     < > 
+    {loading&&
+    <center><Cargando/></center>
+    }
           
         {detalle?.map((x) => (
                     <ItemDetail 
