@@ -10,20 +10,27 @@ const ItemList = ({}) =>{
   useEffect(() => {
     const db = getFirestore();
     const itemsCollection = db.collection("products");
+    const docs = [];
     if (catId) {
       const itemsFiltered = itemsCollection.where('type','==',catId);
       itemsFiltered.get().then((snapshot) => {
         if(snapshot.size ===0){
           console.log('No resultados!')
         }
-        setProducts(snapshot.docs.map(doc => doc.data()))
+        snapshot.forEach((doc)=>{
+          docs.push({id:doc.id, ...doc.data()})
+        })
+        setProducts(docs)
        })  
     }else{
       itemsCollection.get().then((snapshot) => {
         if(snapshot.size ===0){
           console.log('No resultados!')
         }
-        setProducts(snapshot.docs.map(doc => doc.data()))
+        snapshot.forEach((doc)=>{
+          docs.push({id:doc.id, ...doc.data()})
+        })
+        setProducts(docs)
        })  
     }
 
@@ -39,6 +46,7 @@ const ItemList = ({}) =>{
                     <div className="col-md-4">
                       <Item 
                     name={product.name}
+                    id={product.id}
                     img={product.description}
                     />
                     <br />

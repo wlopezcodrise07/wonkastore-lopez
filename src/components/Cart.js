@@ -35,14 +35,14 @@ const Cart = () =>{
         <br/>
         <br/>
         <div className="row">
-            <div className="col-12">
+            <div className="col-md-12">
                 <div className="float-right">
                     <button className="btn btn-warning" onClick={cart.clear}>Limpiar</button>
                 </div>
             </div>
         </div>
         <div className="row">
-            <div className="col-12">
+            <div className="col-md-12">
                 <br/>
                 <br/>
 
@@ -78,6 +78,16 @@ const Cart = () =>{
                         </tbody>
                     </table>
                 </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+        <div className="row">
+            <div className="col-md-3">
+
+            </div>
+            <div className="col-md-6">
+                <button className="btn btn-block btn-success" onClick={cart.uploadOrder}>Generar Orden</button>
             </div>
         </div>
         </>

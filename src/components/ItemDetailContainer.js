@@ -11,12 +11,15 @@ const ItemDetailContainer = () =>{
     useEffect(() => {
       const db = getFirestore();
       const itemsCollection = db.collection("products");
-        const itemFiltered = itemsCollection.where('name','==',id.replace(/-/g,' '));
-        itemFiltered.get().then((snapshot) => {
-          if(snapshot.size ===0){
+        const item = itemsCollection.doc(id);
+        const docs = [];
+        item.get().then((doc) => {
+          if(!doc.exists){
             console.log('No resultados!')
           }
-          setDetalle(snapshot.docs.map(doc => doc.data()))
+            docs.push({id:doc.id,...doc.data()})
+     
+          setDetalle(docs);
          })  
 
   

@@ -1,10 +1,10 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
-const Item = ({name,img}) =>{
+const Item = ({name,id,img}) =>{
 
 
-    const parametro = name.replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+    const parametro = id;
     return (
         <>
         <div className="row">
