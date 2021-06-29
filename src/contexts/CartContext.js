@@ -49,7 +49,7 @@ export const CartProvider = ({children}) =>{
 
     }
 
-    const uploadOrder = () => {
+    const uploadOrder = (dataBuyer) => {
         const productos = [];
         cart.items.forEach((i)=>{
             productos.push({id:i.idproduct,name:i.name,cant:i.cant,price:i.price})
@@ -58,7 +58,7 @@ export const CartProvider = ({children}) =>{
         const ordersCollections = db.collection("orders");
 
         const Order = {
-            buyer: { name: "William", phone: "+51 962769588", email:"william.lopez@gmail.com"},
+            buyer: dataBuyer,
             items : productos,
             date: firebase.firestore.Timestamp.fromDate(new Date()),
             total: cart.total

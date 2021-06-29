@@ -9,7 +9,7 @@ const Home = () =>{
     setTimeout(function () {
 
         setContenido(
-            <div>
+            <div className="container">
             <center>
             <div>
                 <br/><br/>             
@@ -18,7 +18,7 @@ const Home = () =>{
                     <br/>
             </center>  
             <div className="row">
-                <div className="col-4">
+                <div className="col-md-4">
                     <center>
                     <Link to="/category/polo">
                     <img 
@@ -31,7 +31,7 @@ const Home = () =>{
                      <h3>Polos</h3>
                     </center>    
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                     <center>
                     <Link to="/category/pique">
                     <img  
@@ -44,7 +44,7 @@ const Home = () =>{
                      <h3>Piques</h3>
                     </center>
                 </div>
-                <div className="col-4">
+                <div className="col-md-4">
                     <center>
                     <Link to="/category/polera">
                     <img  

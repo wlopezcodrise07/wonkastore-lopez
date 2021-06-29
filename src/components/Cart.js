@@ -4,24 +4,42 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import  '../css/styles.css';
 import Cargando from './Cargando';
 import {useCart} from "../contexts/CartContext";
+import { Modal } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 const Cart = () =>{
     const [detalle, setDetalle] = useState(null);
+    const [show, setShow] = useState(false);
+    const [nameBuyer, setNameBuyer] =useState('');
+    const [lastNameBuyer, setLastNameBuyer] =useState('');
+    const [phoneBuyer, setPhoneBuyer] =useState('');
+    const [emailBuyer, setEmailBuyer] =useState('');
 
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const handleNameBuyer = event => {
+        setNameBuyer(event.target.value)
+    }
+    const handleLastNameBuyer = event => {
+        setLastNameBuyer(event.target.value)
+    }    
+    const handlePhoneBuyer = event => {
+        setPhoneBuyer(event.target.value)
+    }
+    const handleEmailBuyer = event => {
+        setEmailBuyer(event.target.value)
+    }
     const cart = useCart();
+    const generarComprar = () =>{
+        const dataBuyer = { name:nameBuyer, lastName: lastNameBuyer,phone: phoneBuyer, email:emailBuyer}
+        cart.uploadOrder(dataBuyer)
+    }
     useEffect(() => {
-        let promise = new Promise((resolve, reject) => {
-          setTimeout(function () {
-            resolve(cart); 
-          }, 500);
-        });
-        cart ? promise.then(result => {
     console.log(cart)
-    setDetalle(result.cart.items);
-        })
-        : promise.then(result => {
-        })
+    setDetalle(cart.cart.items);
+
       })
-    const montoTotal = 0;
 
 
        return(
@@ -65,9 +83,9 @@ const Cart = () =>{
                             <td>{x.idproduct}</td>
                             <td>{x.name}</td>
                             <td>{x.cant}</td>
-                            <td>{x.price}</td>
-                            <td>{parseFloat(x.cant*x.price)}</td>
-                            <td><img src={x.img} width="50px" height="50px" /></td>
+                            <td>{x.price} USD</td>
+                            <td>{parseFloat(x.cant*x.price)} USD</td>
+                            <td><center><img src={x.img} width="70px" height="70px" /></center></td>
                             <td><button className="btn btn-danger" onClick={()=>cart.removeItem(x.idproduct)}>Eliminar</button></td>
                         </tr>
                         ))}
@@ -87,9 +105,52 @@ const Cart = () =>{
 
             </div>
             <div className="col-md-6">
-                <button className="btn btn-block btn-success" onClick={cart.uploadOrder}>Generar Orden</button>
+                <button className="btn btn-block btn-success" onClick={handleShow}>Generar Orden</button>
             </div>
         </div>
+                            
+      <Modal
+        show={show}
+        size="lg"
+        onHide={handleClose}
+        backdrop="static"
+        keyboard={false}
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Datos del Comprador</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+            <>
+            <div className="row">
+                <div className="col-md-6">
+                    <label>Nombre</label>
+                    <input type="text" className="form-control" placeholder="Ingrese su nombre completo..." onChange={handleNameBuyer} value={nameBuyer}/>
+                </div>
+                <div className="col-md-6">
+                    <label>Apellido</label>
+                    <input type="text" className="form-control" placeholder="Ingrese sus apellidos completos..." onChange={handleLastNameBuyer}/>
+                </div>
+            </div>
+            <br/>
+            <div className="row">
+                <div className="col-md-6">
+                    <label>Telefono</label>
+                    <input type="number" className="form-control" placeholder="Ingrese su número de telefono..." onChange={handlePhoneBuyer} maxlength="9"/>
+                </div>
+                <div className="col-md-6">
+                    <label>E-mail</label>
+                    <input type="email" className="form-control" placeholder="Ingrese su e-mail..." onChange={handleEmailBuyer}/>
+                </div>
+            </div>
+            </>
+        </Modal.Body>
+        <Modal.Footer>
+          <button variant="secondary" className="btn btn-seconday" onClick={handleClose}>
+            Close
+          </button>
+          <button variant="primary" className="btn btn-seconday" onClick={generarComprar}>Realizar Compra</button>
+        </Modal.Footer>
+      </Modal>
         </>
 
         :

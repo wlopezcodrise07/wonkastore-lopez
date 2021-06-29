@@ -1,12 +1,9 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Link} from "react-router-dom";
-import { Button } from 'react-bootstrap';
 import { Navbar } from 'react-bootstrap';
-import { Form } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
-import { FormControl } from 'react-bootstrap';
 import CartWidge from './CartWidge';
 import logo from '../img/logo.png';
 const Welcome = ({name}) =>{
