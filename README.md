@@ -34,7 +34,10 @@ Para el uso de react-router-dom
 
 npm install --save react-router-dom
 
+Para el uso de Firebase
+
+npm install --save firebase
 
 ## Creado por 
-William Lopez - Versión 1
+William Lopez - Versión 2
 
