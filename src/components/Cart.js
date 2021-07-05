@@ -5,7 +5,6 @@ import  '../css/styles.css';
 import Cargando from './Cargando';
 import {useCart} from "../contexts/CartContext";
 import { Modal } from 'react-bootstrap';
-import { NavDropdown } from 'react-bootstrap';
 const Cart = () =>{
     const [detalle, setDetalle] = useState(null);
     const [show, setShow] = useState(false);
@@ -13,7 +12,9 @@ const Cart = () =>{
     const [lastNameBuyer, setLastNameBuyer] =useState('');
     const [phoneBuyer, setPhoneBuyer] =useState('');
     const [emailBuyer, setEmailBuyer] =useState('');
-
+    const [emailConfirmedBuyer, setEmailConfirmedBuyer] =useState('');
+    const [messageEmail,setMessageEmail] = useState(false)
+    
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -29,7 +30,28 @@ const Cart = () =>{
     }
     const handleEmailBuyer = event => {
         setEmailBuyer(event.target.value)
+        if (emailConfirmedBuyer==event.target.value) {
+            setMessageEmail(false)
+        }else{
+            setMessageEmail(true)
+        }
+        console.log(messageEmail)
+        console.log(emailConfirmedBuyer)
+        console.log(emailBuyer)
     }
+
+    const handleEmailConfirmedBuyer = event => {
+        setEmailConfirmedBuyer(event.target.value)
+        if (emailBuyer==event.target.value) {
+            setMessageEmail(false)
+        }else{
+            setMessageEmail(true)
+        }
+        console.log(messageEmail)
+        console.log(emailConfirmedBuyer)
+        console.log(emailBuyer)
+    }
+
     const cart = useCart();
     const generarComprar = () =>{
         const dataBuyer = { name:nameBuyer, lastName: lastNameBuyer,phone: phoneBuyer, email:emailBuyer}
@@ -122,24 +144,42 @@ const Cart = () =>{
         <Modal.Body>
             <>
             <div className="row">
+                <div className="col-md-12">
+                    <p style={{fontSize:'9pt',fontStyle:'italic'}}>*Complete los siguientes campos para completar la compra.</p>
+                </div>
+            </div>
+            <div className="row">
                 <div className="col-md-6">
-                    <label>Nombre</label>
+                    <label>Nombre (*)</label>
                     <input type="text" className="form-control" placeholder="Ingrese su nombre completo..." onChange={handleNameBuyer} value={nameBuyer}/>
                 </div>
                 <div className="col-md-6">
-                    <label>Apellido</label>
+                    <label>Apellido (*)</label>
                     <input type="text" className="form-control" placeholder="Ingrese sus apellidos completos..." onChange={handleLastNameBuyer}/>
+                </div>
+            </div>
+            <br/>
+            <div className="row">            
+                <div className="col-md-6">
+                    <label>E-mail (*)</label>
+                    <input type="email" className="form-control" placeholder="Ingrese su e-mail..." onChange={handleEmailBuyer}/>
+                    {
+                        messageEmail && <><p style={{fontSize:'9pt',fontStyle:'italic',color:'#FF4444',fontWeight:'bold'}}>No coinciden los correos digitados</p></>
+                    }
+                </div>
+                <div className="col-md-6">
+                    <label>Confirmar E-mail (*)</label>
+                    <input type="email" className="form-control" placeholder="Ingrese su e-mail..." onChange={handleEmailConfirmedBuyer}/>
+                    {
+                        messageEmail && <><p style={{fontSize:'9pt',fontStyle:'italic',color:'#FF4444',fontWeight:'bold'}}>No coinciden los correos digitados</p></>
+                    }
                 </div>
             </div>
             <br/>
             <div className="row">
                 <div className="col-md-6">
-                    <label>Telefono</label>
+                    <label>Telefono (*)</label>
                     <input type="number" className="form-control" placeholder="Ingrese su número de telefono..." onChange={handlePhoneBuyer} maxlength="9"/>
-                </div>
-                <div className="col-md-6">
-                    <label>E-mail</label>
-                    <input type="email" className="form-control" placeholder="Ingrese su e-mail..." onChange={handleEmailBuyer}/>
                 </div>
             </div>
             </>
@@ -148,7 +188,13 @@ const Cart = () =>{
           <button variant="secondary" className="btn btn-seconday" onClick={handleClose}>
             Close
           </button>
-          <button variant="primary" className="btn btn-seconday" onClick={generarComprar}>Realizar Compra</button>
+         
+           { 
+           ((nameBuyer.trim()=='' && lastNameBuyer.trim()=='' && phoneBuyer.trim()=='' && emailBuyer.trim()=='' && emailConfirmedBuyer.trim()=='') || (emailBuyer.trim()==emailConfirmedBuyer.trim())) &&  
+           <button variant="primary" className="btn btn-seconday" onClick={generarComprar} >Realizar Compra</button>
+
+            }
+
         </Modal.Footer>
       </Modal>
         </>
